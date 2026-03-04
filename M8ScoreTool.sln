@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M8ScoreTool", "M8ScoreTool\M8ScoreTool.csproj", "{D3618D17-6E12-45E2-97D3-8F6AB813D8B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M8ScoreLibrary", "M8ScoreLibrary\M8ScoreLibrary.csproj", "{011D08DB-DC1F-49CA-8376-1E912A248078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M8PoolScoreTests", "M8PoolScoreTests\M8PoolScoreTests.csproj", "{28A4758C-AFF8-4D3E-98A1-F69A0B271CEA}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SccProjectUniqueName1 = M8PoolScoreTests\\M8PoolScoreTests.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = M8PoolScoreTests\\
+		SccProjectUniqueName2 = M8ScoreLibrary\\M8ScoreLibrary.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = M8ScoreLibrary\\
+		SccProjectUniqueName3 = M8ScoreTool\\M8ScoreTool.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = M8ScoreTool\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3618D17-6E12-45E2-97D3-8F6AB813D8B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3618D17-6E12-45E2-97D3-8F6AB813D8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3618D17-6E12-45E2-97D3-8F6AB813D8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3618D17-6E12-45E2-97D3-8F6AB813D8B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011D08DB-DC1F-49CA-8376-1E912A248078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011D08DB-DC1F-49CA-8376-1E912A248078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011D08DB-DC1F-49CA-8376-1E912A248078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011D08DB-DC1F-49CA-8376-1E912A248078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A4758C-AFF8-4D3E-98A1-F69A0B271CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A4758C-AFF8-4D3E-98A1-F69A0B271CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A4758C-AFF8-4D3E-98A1-F69A0B271CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A4758C-AFF8-4D3E-98A1-F69A0B271CEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

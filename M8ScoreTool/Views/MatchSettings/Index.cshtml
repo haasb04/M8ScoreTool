@@ -1,0 +1,54 @@
+﻿@model M8ScoreLibrary.MatchSettings
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Match Settings</h2>
+@using(Html.BeginForm("Edit", "MatchSettings")) { 
+<div class="row">
+    <div class="col-xs-4">
+        @Html.LabelFor(model => model.WinMultiplier)
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(model => model.WinMultiplier)
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        @Html.LabelFor(model => model.OverUnderLimit)
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(model => model.OverUnderLimit)
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        @Html.LabelFor(model => model.PenaltyMultiplier)
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(model => model.PenaltyMultiplier)
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        @Html.LabelFor(model => model.NonRatedPlayerRate)
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(model => model.NonRatedPlayerRate)
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        @Html.LabelFor(model => model.IsRegularSeason)
+    </div>
+    <div class="col-xs-4">
+        @Html.CheckBoxFor(model => model.IsRegularSeason)
+    </div>
+</div>
+
+<input type="submit" name="Edit" class="submit" value="Update" />
+}
+
+
+
+

@@ -1,0 +1,177 @@
+﻿@model M8ScoreLibrary.Match
+@{
+    ViewBag.Title = "ReportView";
+}
+
+<h2>ReportView</h2>
+<div class="col-lg-6">
+    <table class="table-striped text-center">
+        <tr>
+            <td></td>
+            <td>Your Rate
+            </td>
+            <td>Your Score</td>
+            <td>Margin</td>
+            <td>Add On</td>
+            <td>Win Bonus</td>
+            <td>Total</td>
+        </tr>
+        <tr>
+            <td>Set 1</td>
+            <td>@Model.Sets[0].Rate</td>
+            <td>@Model.Sets[0].Score</td>
+            <td>@Model.Sets[0].Margin X3</td>
+            <td>@Model.Sets[0].AddOn</td>
+            <td>@Model.Sets[0].WinBonus</td>
+            <td>@Model.Sets[0].SetTotal</td>
+        </tr>
+        <tr>
+            <td>Set 2</td>
+            <td>@Model.Sets[1].Rate</td>
+            <td>@Model.Sets[1].Score</td>
+            <td>@Model.Sets[1].Margin X3</td>
+            <td>@Model.Sets[1].AddOn</td>
+            <td>@Model.Sets[1].WinBonus</td>
+            <td>@Model.Sets[1].SetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].SetTotal + Model.Sets[1].SetTotal)</td>
+        </tr>
+        <tr>
+            <td>Set 3</td>
+            <td>@Model.Sets[2].Rate</td>
+            <td>@Model.Sets[2].Score</td>
+            <td>@Model.Sets[2].Margin X3</td>
+            <td>@Model.Sets[2].AddOn</td>
+            <td>@Model.Sets[2].WinBonus</td>
+            <td>@Model.Sets[2].SetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].SetTotal + Model.Sets[1].SetTotal + Model.Sets[2].SetTotal)</td>
+        </tr>
+        <tr>
+            <td>Set 4</td>
+            <td>@Model.Sets[3].Rate</td>
+            <td>@Model.Sets[3].Score</td>
+            <td>@Model.Sets[3].Margin X3</td>
+            <td>@Model.Sets[3].AddOn</td>
+            <td>@Model.Sets[3].WinBonus</td>
+            <td>@Model.Sets[3].SetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].SetTotal + Model.Sets[1].SetTotal + Model.Sets[2].SetTotal + Model.Sets[3].SetTotal)</td>
+        </tr>
+        <tr>
+            <td>Set 5</td>
+            <td>@Model.Sets[4].Rate</td>
+            <td>@Model.Sets[4].Score</td>
+            <td>@Model.Sets[4].Margin X3</td>
+            <td>@Model.Sets[4].AddOn</td>
+            <td>@Model.Sets[4].WinBonus</td>
+            <td>@Model.Sets[4].SetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].SetTotal + Model.Sets[1].SetTotal + Model.Sets[2].SetTotal + Model.Sets[3].SetTotal + Model.Sets[4].SetTotal)</td>
+        </tr>
+        <tr>
+            <td colspan="6">
+               Total Rate: @Model.TotalRate / Over-Under: @Html.Raw(Model.TotalRate - Model.OverUnderLimit)
+            </td>
+            <td>@Model.TeamBonusOrPenalty</td>
+        </tr>
+        <tr>
+            <td colspan="7"><span style="font-size:2em; font-weight:bold">Total Team Points: @Model.MatchScore</span></td>
+        </tr>
+    </table>
+</div>
+<div class="col-lg-6">
+    <table class="table-striped text-center">
+        <tr>
+            <td></td>
+            <td>
+                Opp Rate
+            </td>
+            <td>Opp Score</td>
+            <td>Margin</td>
+            <td>Add On</td>
+            <td>Win Bonus</td>
+            <td>Total</td>
+        </tr>
+        <tr>
+            <td>Set 1</td>
+            <td>@Model.Sets[0].OpponentRate</td>
+            <td>@Model.Sets[0].OpponentScore</td>
+            <td>@Model.Sets[0].OpponentMargin</td>
+            <td>@Model.Sets[0].OpponentAddOn</td>
+            <td>@Model.Sets[0].OpponentWinBonus</td>
+            <td>@Model.Sets[0].OpponentSetTotal</td>
+        </tr>
+        <tr>
+            <td>Set 2</td>
+            <td>@Model.Sets[1].OpponentRate</td>
+            <td>@Model.Sets[1].OpponentScore</td>
+            <td>@Model.Sets[1].OpponentMargin</td>
+            <td>@Model.Sets[1].OpponentAddOn</td>
+            <td>@Model.Sets[1].OpponentWinBonus</td>
+            <td>@Model.Sets[1].OpponentSetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].OpponentSetTotal + Model.Sets[1].OpponentSetTotal)</td>
+        </tr>
+        <tr>
+            <td>Set 3</td>
+            <td>@Model.Sets[2].OpponentRate</td>
+            <td>@Model.Sets[2].OpponentScore</td>
+            <td>@Model.Sets[2].OpponentMargin</td>
+            <td>@Model.Sets[2].OpponentAddOn</td>
+            <td>@Model.Sets[2].OpponentWinBonus</td>
+            <td>@Model.Sets[2].OpponentSetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].OpponentSetTotal + Model.Sets[1].OpponentSetTotal + Model.Sets[2].OpponentSetTotal)</td>
+        </tr>
+        <tr>
+            <td>Set 4</td>
+            <td>@Model.Sets[3].OpponentRate</td>
+            <td>@Model.Sets[3].OpponentScore</td>
+            <td>@Model.Sets[3].OpponentMargin X3</td>
+            <td>@Model.Sets[3].OpponentAddOn</td>
+            <td>@Model.Sets[3].OpponentWinBonus</td>
+            <td>@Model.Sets[3].OpponentSetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].OpponentSetTotal + Model.Sets[1].OpponentSetTotal + Model.Sets[2].OpponentSetTotal + Model.Sets[3].OpponentSetTotal)</td>
+        </tr>
+        <tr>
+            <td>Set 5</td>
+            <td>@Model.Sets[4].OpponentRate</td>
+            <td>@Model.Sets[4].OpponentScore</td>
+            <td>@Model.Sets[4].OpponentMargin X3</td>
+            <td>@Model.Sets[4].OpponentAddOn</td>
+            <td>@Model.Sets[4].OpponentWinBonus</td>
+            <td>@Model.Sets[4].OpponentSetTotal</td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td>@Html.Raw(Model.Sets[0].OpponentSetTotal + Model.Sets[1].OpponentSetTotal + Model.Sets[2].OpponentSetTotal + Model.Sets[3].OpponentSetTotal + Model.Sets[4].OpponentSetTotal)</td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                Total Rate: @Model.OpponentTotalRate / Over-Under: @Html.Raw(Model.OpponentTotalRate - Model.OverUnderLimit)
+            </td>
+            <td>@Model.OpponentTeamBonusOrPenalty</td>
+        </tr>
+        <tr>
+            <td colspan="7"><span style="font-size:2em; font-weight:bold">Total Team Points: @Model.OpponentMatchScore</span></td>
+        </tr>
+    </table>
+    
+</div>
+@Html.ActionLink("Return to Match", "Index")

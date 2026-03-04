@@ -1,0 +1,10 @@
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\bin\Debug\M8PoolScoreTests.dll
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\bin\Debug\M8PoolScoreTests.pdb
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\bin\Debug\M8ScoreLibrary.dll
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\bin\Debug\M8ScoreLibrary.pdb
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\obj\Debug\M8PoolScoreTests.csproj.AssemblyReference.cache
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\obj\Debug\M8PoolScoreTests.csproj.CoreCompileInputs.cache
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\obj\Debug\M8PoolScoreTests.csproj.CopyComplete
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\obj\Debug\M8PoolScoreTests.dll
+C:\brianhaas\M8ScoreTool\M8PoolScoreTests\obj\Debug\M8PoolScoreTests.pdb

@@ -1,0 +1,5 @@
+C:\brianhaas\M8ScoreTool\M8ScoreLibrary\bin\Debug\M8ScoreLibrary.dll
+C:\brianhaas\M8ScoreTool\M8ScoreLibrary\bin\Debug\M8ScoreLibrary.pdb
+C:\brianhaas\M8ScoreTool\M8ScoreLibrary\obj\Debug\M8ScoreLibrary.csproj.CoreCompileInputs.cache
+C:\brianhaas\M8ScoreTool\M8ScoreLibrary\obj\Debug\M8ScoreLibrary.dll
+C:\brianhaas\M8ScoreTool\M8ScoreLibrary\obj\Debug\M8ScoreLibrary.pdb

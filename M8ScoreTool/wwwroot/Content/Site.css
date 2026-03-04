@@ -1,0 +1,240 @@
+﻿body {
+    padding-top: 0;
+    padding-bottom: 20px;
+    background: #f3f6fb;
+    color: #1f2937;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.site-shell {
+    min-height: 100vh;
+}
+
+.site-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
+}
+
+.site-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    padding-bottom: 12px;
+}
+
+.site-brand {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.site-nav {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 12px;
+}
+
+.site-nav a {
+    color: #dbeafe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+}
+
+.site-main {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.site-footer {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.form-control {
+    border-radius: 8px;
+    border-color: #cbd5e1;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.btn-default {
+    border-color: #cbd5e1;
+    color: #1f2937;
+    background: #f8fafc;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    background: #eef2ff;
+    border-color: #94a3b8;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table > thead > tr > th {
+    background: #eef2ff;
+    border-color: #dbe4f0;
+    color: #1e3a8a;
+    font-weight: 700;
+}
+
+.table > tbody > tr > td {
+    border-color: #e2e8f0;
+    vertical-align: middle;
+}
+
+.match-input {
+    min-width: 70px;
+    max-width: 90px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.match-summary {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.match-total {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 10px;
+    color: #1d4ed8;
+}
+
+.mb0 {
+    margin-bottom: 0;
+}
+
+.page-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.section-gap-sm {
+    margin-bottom: 14px;
+}
+
+.report-total {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1d4ed8;
+}
+
+.alert-info {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e3a8a;
+}
+
+.navbar-right {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar-right li {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.navbar-right a {
+    color: #dbeafe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.navbar-right a:hover,
+.navbar-right a:focus {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+}
+
+@media (max-width: 767px) {
+    .site-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .site-nav {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}

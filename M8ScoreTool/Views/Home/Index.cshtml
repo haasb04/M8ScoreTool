@@ -2,220 +2,224 @@
 @{
     ViewBag.Title = "M8 Match Utility";
 }
-@using(Html.BeginForm("Edit", "Home")) {
-    <h2>Enter Match Ratings and Scores</h2>
-    <div class="row">
-        <div class="col-xs-6 form-group">
+<h2 class="page-title">M8 Match Utility</h2>
+
+@using(Html.BeginForm("Edit", "Home", FormMethod.Post, new { @class = "match-form" })) {
+    <div class="row section-gap-sm">
+        <div class="col-md-6">
+            <h4 class="section-title">Our Team</h4>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-condensed text-center">
+                    <thead>
+                        <tr>
+                            <th>Set</th>
+                            <th>Rate</th>
+                            <th>Score</th>
+                            <th>Win</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Set 1</td>
+                            <td>@Html.TextBoxFor(model => model.Set1Rate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set1Score, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.CheckBoxFor(model => model.Set1Win)</td>
+                        </tr>
+                        <tr>
+                            <td>Set 2</td>
+                            <td>@Html.TextBoxFor(model => model.Set2Rate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set2Score, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.CheckBoxFor(model => model.Set2Win)</td>
+                        </tr>
+                        <tr>
+                            <td>Set 3</td>
+                            <td>@Html.TextBoxFor(model => model.Set3Rate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set3Score, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.CheckBoxFor(model => model.Set3Win)</td>
+                        </tr>
+                        <tr>
+                            <td>Set 4</td>
+                            <td>@Html.TextBoxFor(model => model.Set4Rate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set4Score, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.CheckBoxFor(model => model.Set4Win)</td>
+                        </tr>
+                        <tr>
+                            <td>Set 5</td>
+                            <td>@Html.TextBoxFor(model => model.Set5Rate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set5Score, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.CheckBoxFor(model => model.Set5Win)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h4 class="section-title">Opponent</h4>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-condensed text-center">
+                    <thead>
+                        <tr>
+                            <th>Set</th>
+                            <th>Rate</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Set 1</td>
+                            <td>@Html.TextBoxFor(model => model.Set1ORate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set1OScore, new { @class = "form-control input-sm match-input" })</td>
+                        </tr>
+                        <tr>
+                            <td>Set 2</td>
+                            <td>@Html.TextBoxFor(model => model.Set2ORate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set2OScore, new { @class = "form-control input-sm match-input" })</td>
+                        </tr>
+                        <tr>
+                            <td>Set 3</td>
+                            <td>@Html.TextBoxFor(model => model.Set3ORate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set3OScore, new { @class = "form-control input-sm match-input" })</td>
+                        </tr>
+                        <tr>
+                            <td>Set 4</td>
+                            <td>@Html.TextBoxFor(model => model.Set4ORate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set4OScore, new { @class = "form-control input-sm match-input" })</td>
+                        </tr>
+                        <tr>
+                            <td>Set 5</td>
+                            <td>@Html.TextBoxFor(model => model.Set5ORate, new { @class = "form-control input-sm match-input" })</td>
+                            <td>@Html.TextBoxFor(model => model.Set5OScore, new { @class = "form-control input-sm match-input" })</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row section-gap-sm">
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary">Update Match</button>
+            <a class="btn btn-default" href="@Url.Action("Index", "MatchSettings")">Settings</a>
+            <a class="btn btn-default" href="@Url.Action("ReportView", "Home")">Report View</a>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row match-summary">
+        <div class="col-sm-6 text-center">
             <h4>Our Team</h4>
-            <div class="row">
-                <div class="col-xs-3"></div>
-                <div class="col-xs-3">
-                    Rate
-                </div>
-                <div class="col-xs-3">Score</div>
-                <div class="col-xs-2">Win?</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 1</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set1Rate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set1Score, new { Size = "3" })</div>
-                <div class="col-xs-2">@Html.CheckBoxFor(model => model.Set1Win)</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 2</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set2Rate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set2Score, new { Size = "3" })</div>
-                <div class="col-xs-2">@Html.CheckBoxFor(model => model.Set2Win)</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 3</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set3Rate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set3Score, new { Size = "3" })</div>
-                <div class="col-xs-2">@Html.CheckBoxFor(model => model.Set3Win)</div>
-
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 4</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set4Rate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set4Score, new { Size = "3" })</div>
-                <div class="col-xs-2">@Html.CheckBoxFor(model => model.Set4Win)</div>
-
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 5</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set5Rate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set5Score, new { Size = "3" })</div>
-                <div class="col-xs-2">@Html.CheckBoxFor(model => model.Set5Win)</div>
-
-            </div>
+            <div>Total Rate: <strong>@Model.TotalRate</strong></div>
+            <div>Over/Under: <strong>@Model.MatchOverUnder</strong></div>
+            <div class="match-total">@Model.MatchScore</div>
         </div>
-
-        <div class="col-xs-6 form-group">
+        <div class="col-sm-6 text-center">
             <h4>Opponent</h4>
-            <div class="row">
-                <div class="col-xs-3"></div>
-                <div class="col-xs-3">
-                    Rate
-                </div>
-                <div class="col-xs-3">Score</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 1</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set1ORate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set1OScore, new { Size = "3" })</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 2</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set2ORate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set2OScore, new { Size = "3" })</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 3</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set3ORate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set3OScore, new { Size = "3" })</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 4</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set4ORate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set4OScore, new { Size = "3" })</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Set 5</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set5ORate, new { Size = "3" })</div>
-                <div class="col-xs-3">@Html.TextBoxFor(model => model.Set5OScore, new { Size = "3" })</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <input type="submit" name="Edit" class="submit" value="Update" />
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="row">
-                <div class="col-xs-6">
-                    Total Rate: @Model.TotalRate
-
-                </div>
-                <div class="col-xs-6">
-                    Over/Under:  @Model.MatchOverUnder
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="row">
-                <div class="col-xs-6">
-                    Total Rate: @Model.TotalORate
-
-                </div>
-                <div class="col-xs-6">
-                    Over/Under:  @Model.MatchOOverUnder
-                </div>
-            </div>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-xs-6 text-center">
-            Our Team Score<br/>
-            <label class="h1">@Model.MatchScore</label>
-        </div>
-        <div class="col-xs-6 text-center">
-            Opponent Team Score<br/>
-            <label class="h1">@Model.MatchOScore</label>
+            <div>Total Rate: <strong>@Model.TotalORate</strong></div>
+            <div>Over/Under: <strong>@Model.MatchOOverUnder</strong></div>
+            <div class="match-total">@Model.MatchOScore</div>
         </div>
     </div>
 }
-*** Notes <br/>
-<div class="text-info">
-    <ul>
-        <li>For players with no rating, enter -1 in their Rate box.</li>
-        <li>For a forfeited match, enter -1 in the player score.</li>
+
+<div class="alert alert-info" role="alert">
+    <strong>Notes:</strong>
+    <ul class="mb0">
+        <li>For players with no rating, enter <strong>-1</strong> in their rate box.</li>
+        <li>For a forfeited match, enter <strong>-1</strong> in the player score.</li>
     </ul>
-   
 </div>
-@Html.ActionLink("Settings", "Index", "MatchSettings")
-&nbsp;&nbsp;
-@Html.ActionLink("Report View", "ReportView")
+
 <hr />
-<h4>Fifth Set Scenarios</h4>
-<div><b>Win the Set</b>
-    <table class="table-responsive">
-        <tr>
-            <td width="150">Score:</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 1)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 2)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 3)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 4)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 5)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 6)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 7)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 8)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 9)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 10)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 11)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 12)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 13)</td>
-            <td>@Html.Raw(Model.MatchFiveWin.Rate + 14)</td>
-        </tr>
-        <tr>
-            <td width="150">Must Hold To:</td>
-            <td>@Model.MatchFiveWin.RatePlusNone</td>
-            <td>@Model.MatchFiveWin.RatePlusOne</td>
-            <td>@Model.MatchFiveWin.RatePlusTwo</td>
-            <td>@Model.MatchFiveWin.RatePlusThree</td>
-            <td>@Model.MatchFiveWin.RatePlusFour</td>
-            <td>@Model.MatchFiveWin.RatePlusFive</td>
-            <td>@Model.MatchFiveWin.RatePlusSix</td>
-            <td>@Model.MatchFiveWin.RatePlusSeven</td>
-            <td>@Model.MatchFiveWin.RatePlusEight</td>
-            <td>@Model.MatchFiveWin.RatePlusNine</td>
-            <td>@Model.MatchFiveWin.RatePlusTen</td>
-            <td>@Model.MatchFiveWin.RatePlusEleven</td>
-            <td>@Model.MatchFiveWin.RatePlusTwelve</td>
-            <td>@Model.MatchFiveWin.RatePlusThirteen</td>
-            <td>@Model.MatchFiveWin.RatePlusFourteen</td>
-        </tr>
+<h4 class="section-title">Fifth Set Scenarios</h4>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed text-center">
+        <thead>
+            <tr>
+                <th>Win the Set</th>
+                <th>@Model.MatchFiveWin.Rate</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 1)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 2)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 3)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 4)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 5)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 6)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 7)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 8)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 9)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 10)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 11)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 12)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 13)</th>
+                <th>@Html.Raw(Model.MatchFiveWin.Rate + 14)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Must Hold To</strong></td>
+                <td>@Model.MatchFiveWin.RatePlusNone</td>
+                <td>@Model.MatchFiveWin.RatePlusOne</td>
+                <td>@Model.MatchFiveWin.RatePlusTwo</td>
+                <td>@Model.MatchFiveWin.RatePlusThree</td>
+                <td>@Model.MatchFiveWin.RatePlusFour</td>
+                <td>@Model.MatchFiveWin.RatePlusFive</td>
+                <td>@Model.MatchFiveWin.RatePlusSix</td>
+                <td>@Model.MatchFiveWin.RatePlusSeven</td>
+                <td>@Model.MatchFiveWin.RatePlusEight</td>
+                <td>@Model.MatchFiveWin.RatePlusNine</td>
+                <td>@Model.MatchFiveWin.RatePlusTen</td>
+                <td>@Model.MatchFiveWin.RatePlusEleven</td>
+                <td>@Model.MatchFiveWin.RatePlusTwelve</td>
+                <td>@Model.MatchFiveWin.RatePlusThirteen</td>
+                <td>@Model.MatchFiveWin.RatePlusFourteen</td>
+            </tr>
+        </tbody>
     </table>
 </div>
-<br/>
-<div><b>Lose the Set</b>
-     <table class="table-responsive">
-         <tr>
-             <td width="150">Opp. Score</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 1)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 2)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 3)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 4)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 5)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 6)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 7)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 8)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 9)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 10)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 11)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 12)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 13)</td>
-             <td>@Html.Raw(Model.MatchFiveLose.Rate + 14)</td>
-         </tr>
-         <tr>
-             <td width="150">Must Score</td>
-             <td>@Model.MatchFiveLose.RatePlusNone</td>
-             <td>@Model.MatchFiveLose.RatePlusOne</td>
-             <td>@Model.MatchFiveLose.RatePlusTwo</td>
-             <td>@Model.MatchFiveLose.RatePlusThree</td>
-             <td>@Model.MatchFiveLose.RatePlusFour</td>
-             <td>@Model.MatchFiveLose.RatePlusFive</td>
-             <td>@Model.MatchFiveLose.RatePlusSix</td>
-             <td>@Model.MatchFiveLose.RatePlusSeven</td>
-             <td>@Model.MatchFiveLose.RatePlusEight</td>
-             <td>@Model.MatchFiveLose.RatePlusNine</td>
-             <td>@Model.MatchFiveLose.RatePlusTen</td>
-             <td>@Model.MatchFiveLose.RatePlusEleven</td>
-             <td>@Model.MatchFiveLose.RatePlusTwelve</td>
-             <td>@Model.MatchFiveLose.RatePlusThirteen</td>
-             <td>@Model.MatchFiveLose.RatePlusFourteen</td>
-         </tr>
-     </table>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed text-center">
+        <thead>
+            <tr>
+                <th>Lose the Set</th>
+                <th>@Model.MatchFiveLose.Rate</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 1)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 2)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 3)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 4)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 5)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 6)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 7)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 8)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 9)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 10)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 11)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 12)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 13)</th>
+                <th>@Html.Raw(Model.MatchFiveLose.Rate + 14)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Must Score</strong></td>
+                <td>@Model.MatchFiveLose.RatePlusNone</td>
+                <td>@Model.MatchFiveLose.RatePlusOne</td>
+                <td>@Model.MatchFiveLose.RatePlusTwo</td>
+                <td>@Model.MatchFiveLose.RatePlusThree</td>
+                <td>@Model.MatchFiveLose.RatePlusFour</td>
+                <td>@Model.MatchFiveLose.RatePlusFive</td>
+                <td>@Model.MatchFiveLose.RatePlusSix</td>
+                <td>@Model.MatchFiveLose.RatePlusSeven</td>
+                <td>@Model.MatchFiveLose.RatePlusEight</td>
+                <td>@Model.MatchFiveLose.RatePlusNine</td>
+                <td>@Model.MatchFiveLose.RatePlusTen</td>
+                <td>@Model.MatchFiveLose.RatePlusEleven</td>
+                <td>@Model.MatchFiveLose.RatePlusTwelve</td>
+                <td>@Model.MatchFiveLose.RatePlusThirteen</td>
+                <td>@Model.MatchFiveLose.RatePlusFourteen</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

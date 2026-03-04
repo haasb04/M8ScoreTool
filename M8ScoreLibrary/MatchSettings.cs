@@ -36,8 +36,13 @@ namespace M8ScoreLibrary {
 
 		public void Save(string path) {
 			try {
+				string directory = Path.GetDirectoryName(path);
+				if(!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory)) {
+					Directory.CreateDirectory(directory);
+				}
 				XmlSerializer serializer = new XmlSerializer(typeof(MatchSettings));
 				using(FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)) {
+					fs.SetLength(0);
 					serializer.Serialize(fs, this);
 				}
 			} catch(Exception) {
@@ -59,7 +64,7 @@ namespace M8ScoreLibrary {
 		}
 
 		public static string PathString() {
-			return "~/App_Data/MatchSettings.Xml";
+			return Path.Combine("App_Data", "MatchSettings.Xml");
 		}
 	}
 }

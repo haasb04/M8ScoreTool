@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using M8ScoreLibrary;
+using M8ScoreTool.Extensions;
 using M8ScoreTool.Models;
 
 namespace M8ScoreTool.Controllers {
 	public class HomeController : Controller {
+		private const string MatchSessionKey = "Match";
+		private readonly IWebHostEnvironment _environment;
+
+		public HomeController(IWebHostEnvironment environment) {
+			_environment = environment;
+		}
+
 		public ActionResult Index() {
-			Match match = (Match)Session["Match"];
-			MatchSettings settings = (MatchSettings)Session["MatchSettings"];
+			Match match = HttpContext.Session.GetObject<Match>(MatchSessionKey);
+			MatchSettings settings = null;
 
 			if(settings == null) {
-				settings = MatchSettings.LoadFromXml(Server.MapPath(MatchSettings.PathString()));
+				string settingsPath = Path.Combine(_environment.ContentRootPath, MatchSettings.PathString());
+				settings = MatchSettings.LoadFromXml(settingsPath);
 				if(settings == null) {
 					//there was an error. clean this up later.
 					settings = new MatchSettings(); //defaults
@@ -27,7 +32,7 @@ namespace M8ScoreTool.Controllers {
 				//match.Sets[2].EnterSet(57, 40, 42, 50, false);
 				//match.Sets[3].EnterSet(63, 55, 70, 32, true);
 				//match.Sets[4].EnterSet(72, 70, 83, 77, true);
-				Session["Match"] = match;
+				HttpContext.Session.SetObject(MatchSessionKey, match);
 
 			}
 
@@ -37,10 +42,10 @@ namespace M8ScoreTool.Controllers {
 		[HttpPost]
 		public ActionResult Edit(MatchViewModel model) {
 			//update match and refresh the model
-			Match match = (Match)Session["Match"];
+			Match match = HttpContext.Session.GetObject<Match>(MatchSessionKey);
 			if(match == null) {
 				match = new Match();
-				Session["Match"] = match;
+				HttpContext.Session.SetObject(MatchSessionKey, match);
 			}
 
 			match.Sets[0].Rate = model.Set1Rate;
@@ -73,14 +78,17 @@ namespace M8ScoreTool.Controllers {
 			match.Sets[4].OpponentScore = model.Set5OScore;
 			match.Sets[4].Win = model.Set5Win;
 
+			HttpContext.Session.SetObject(MatchSessionKey, match);
+
 			return RedirectToAction("Index");
 		}
 
 		public ActionResult ReportView() {
-			Match model = (Match)Session["Match"];
+			Match model = HttpContext.Session.GetObject<Match>(MatchSessionKey);
 			if(model == null) {
-				return Redirect("Index");
+				return RedirectToAction("Index");
 			}
+			model.CalculateMatch();
 			return View(model);
 		}
 

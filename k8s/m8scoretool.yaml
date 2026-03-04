@@ -18,6 +18,11 @@ metadata:
 spec:
   replicas: 1
   progressDeadlineSeconds: 600
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: m8scoretool
@@ -26,6 +31,7 @@ spec:
       labels:
         app: m8scoretool
     spec:
+      terminationGracePeriodSeconds: 15
       imagePullSecrets:
         - name: github-container-registry
       containers:

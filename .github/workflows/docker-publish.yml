@@ -49,6 +49,7 @@ jobs:
             type=ref,event=branch
             type=ref,event=tag
             type=sha
+            type=raw,value=${{ github.sha }}
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and (optionally) push image
@@ -63,6 +64,7 @@ jobs:
           cache-to: type=gha,mode=max
   deploy:
     needs: docker
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

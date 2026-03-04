@@ -29,30 +29,40 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
-app.Use(async (context, next) =>
-{
-    string path = context.Request.Path.Value?.ToLowerInvariant() ?? string.Empty;
-    bool isLoginPath = path.StartsWith("/account/login");
-    bool isLogOffPath = path.StartsWith("/account/logoff");
-    bool isStaticPath = path.StartsWith("/content") || path.StartsWith("/scripts") || path.StartsWith("/fonts") || path.StartsWith("/favicon");
+app.Use(
+    async (context, next) =>
+    {
+        string path = context.Request.Path.Value?.ToLowerInvariant() ?? string.Empty;
+        bool isLoginPath = path.StartsWith("/account/login");
+        bool isLogOffPath = path.StartsWith("/account/logoff");
+        bool isStaticPath =
+            path.StartsWith("/content")
+            || path.StartsWith("/scripts")
+            || path.StartsWith("/fonts")
+            || path.StartsWith("/favicon");
 
-    if(isLoginPath || isLogOffPath || isStaticPath) {
-        await next();
-        return;
+        if (isLoginPath || isLogOffPath || isStaticPath)
+        {
+            await next();
+            return;
+        }
+
+        bool isAuthenticated = string.Equals(
+            context.Session.GetString("SimpleAuth.Authenticated"),
+            "true",
+            StringComparison.OrdinalIgnoreCase
+        );
+        if (isAuthenticated)
+        {
+            await next();
+            return;
+        }
+
+        string returnUrl = context.Request.Path + context.Request.QueryString;
+        context.Response.Redirect($"/Account/Login?returnUrl={Uri.EscapeDataString(returnUrl)}");
     }
+);
 
-    bool isAuthenticated = string.Equals(context.Session.GetString("SimpleAuth.Authenticated"), "true", StringComparison.OrdinalIgnoreCase);
-    if(isAuthenticated) {
-        await next();
-        return;
-    }
-
-    string returnUrl = context.Request.Path + context.Request.QueryString;
-    context.Response.Redirect($"/Account/Login?returnUrl={Uri.EscapeDataString(returnUrl)}");
-});
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

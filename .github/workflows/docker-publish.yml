@@ -61,3 +61,21 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set the Kubernetes context
+        uses: azure/k8s-set-context@v2 
+        with:
+          method: service-account
+          k8s-url:  https://212.2.242.56:6443
+          k8s-secret: ${{ secrets.KUBERNETES_SECRET }}  
+          
+      - name: Deploy to Kubernetes
+        uses: azure/k8s-deploy@v3
+        with:
+          namespace: m8scoretool 
+          manifests: |
+            k8s/m8scoretool.yaml
+          images: ghcr.io/haasb04/m8scoretool:${{ github.sha }}

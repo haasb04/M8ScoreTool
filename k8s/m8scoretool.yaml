@@ -7,7 +7,7 @@ metadata:
 type: Opaque
 stringData:
   # Change before deploy
-  password: "change-me"
+  password: "huskers"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: m8scoretool
-          image: your-registry/m8scoretool:latest
+          image: ghcr.io/haasb04/m8scoretool:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -58,8 +58,10 @@ spec:
               cpu: "100m"
               memory: "128Mi"
             limits:
-              cpu: "500m"
-              memory: "512Mi"
+              cpu: "250m"
+              memory: "256Mi"
+    imagePullSecrets:
+      - name: github-container-registry  
 ---
 apiVersion: v1
 kind: Service

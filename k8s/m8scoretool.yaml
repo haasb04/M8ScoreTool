@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: m8scoretool-secret
+  labels:
+    app: m8scoretool
+type: Opaque
+stringData:
+  # Change before deploy
+  password: "change-me"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: m8scoretool
+  labels:
+    app: m8scoretool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: m8scoretool
+  template:
+    metadata:
+      labels:
+        app: m8scoretool
+    spec:
+      containers:
+        - name: m8scoretool
+          image: your-registry/m8scoretool:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+            - name: M8SCORETOOL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: m8scoretool-secret
+                  key: password
+          readinessProbe:
+            httpGet:
+              path: /Account/Login
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /Account/Login
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: m8scoretool
+  labels:
+    app: m8scoretool
+spec:
+  selector:
+    app: m8scoretool
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

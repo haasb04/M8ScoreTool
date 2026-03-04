@@ -25,6 +25,8 @@ spec:
       labels:
         app: m8scoretool
     spec:
+      imagePullSecrets:
+        - name: github-container-registry
       containers:
         - name: m8scoretool
           image: ghcr.io/haasb04/m8scoretool:latest
@@ -60,8 +62,6 @@ spec:
             limits:
               cpu: "250m"
               memory: "256Mi"
-    imagePullSecrets:
-      - name: github-container-registry  
 ---
 apiVersion: v1
 kind: Service
@@ -77,3 +77,23 @@ spec:
       port: 80
       targetPort: 8080
   type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: m8scoretool
+  labels:
+    app: m8scoretool
+spec:
+  rules:
+    - host: m8.brianhaas.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: m8scoretool
+                port:
+                  number: 80
+

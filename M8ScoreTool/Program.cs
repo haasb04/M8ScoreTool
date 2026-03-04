@@ -1,4 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
+var useHttpsRedirection = builder.Configuration.GetValue<bool>("UseHttpsRedirection");
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();
@@ -14,10 +15,16 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    if (useHttpsRedirection)
+    {
+        app.UseHsts();
+    }
 }
 
-app.UseHttpsRedirection();
+if (useHttpsRedirection)
+{
+    app.UseHttpsRedirection();
+}
 app.UseStaticFiles();
 
 app.UseRouting();

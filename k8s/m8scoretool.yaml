@@ -45,6 +45,8 @@ spec:
               value: http://+:8080
             - name: ASPNETCORE_ENVIRONMENT
               value: Production
+            - name: UseHttpsRedirection
+              value: "false"
             - name: M8SCORETOOL_PASSWORD
               valueFrom:
                 secretKeyRef:
